@@ -5,22 +5,21 @@ import { trpc } from '../../utils/trpc';
 
 const SingleMatchPage = () => {
   const { query } = useRouter();
-  console.log(
-    '🚀 ~ file: [matchId].tsx ~ line 8 ~ SingleMatchPage ~ query',
-    query
-  );
+  console.log('🚀 ~ file: [matchId].tsx ~ line 8 ~ SingleMatchPage ~ query', {
+    query,
+  });
 
-  if(!query.matchId) {
-    return(
-        <div>
-            <p>Sorry you must supply slug</p>
-        </div>
-    )
+  if (!query.matchId) {
+    return (
+      <div>
+        <p>Sorry you must supply slug</p>
+      </div>
+    );
   }
 
   return (
     <div>
-      
+      <p>hi</p>{' '}
     </div>
   );
 };
