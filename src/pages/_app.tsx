@@ -7,8 +7,13 @@ import type { AppType } from 'next/dist/shared/lib/utils';
 import superjson from 'superjson';
 import type { AppRouter } from '../server/router/app.router';
 import '../styles/globals.css';
-import { MantineProvider } from '@mantine/core';
+import { MantineProvider, createEmotionCache } from '@mantine/core';
 import AppContainer from '../components/AppContainer';
+
+const myCache = createEmotionCache({
+  key: 'mantine',
+  prepend: false,
+});
 
 const MyApp: AppType = ({
   Component,
@@ -16,6 +21,7 @@ const MyApp: AppType = ({
 }) => (
   <SessionProvider session={session}>
     <MantineProvider
+      emotionCache={myCache}
       withGlobalStyles
       withNormalizeCSS
       theme={{ colorScheme: 'light' }}
