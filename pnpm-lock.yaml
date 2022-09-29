@@ -15,11 +15,13 @@ specifiers:
   '@trpc/next': ^9.27.2
   '@trpc/react': ^9.27.2
   '@trpc/server': ^9.27.2
+  '@types/aos': ^3.0.4
   '@types/node': ^16.11.59
   '@types/react': 18.0.14
   '@types/react-dom': 18.0.5
   '@typescript-eslint/eslint-plugin': ^5.38.0
   '@typescript-eslint/parser': ^5.38.0
+  aos: 3.0.0-beta.6
   autoprefixer: ^10.4.11
   copy-to-clipboard: ^3.3.2
   eslint: ^8.23.1
@@ -61,6 +63,7 @@ dependencies:
   '@trpc/next': 9.27.2_5ivp3vlliefujxyucizrtvvdle
   '@trpc/react': 9.27.2_e7pohnznr4qdgpqc5x4q3pmfcu
   '@trpc/server': 9.27.2
+  aos: 3.0.0-beta.6
   copy-to-clipboard: 3.3.2
   nanoid: 4.0.0
   next: 12.2.3_ir3quccc6i62x6qn6jjhyjjiey
@@ -76,6 +79,7 @@ devDependencies:
   '@babel/core': 7.19.1
   '@babel/eslint-parser': 7.19.1_zdglor7vg7osicr5spasq6cc5a
   '@babel/preset-react': 7.18.6_@babel+core@7.19.1
+  '@types/aos': 3.0.4
   '@types/node': 16.11.59
   '@types/react': 18.0.14
   '@types/react-dom': 18.0.5
@@ -1059,6 +1063,10 @@ packages:
     resolution: {integrity: sha512-LcXCC004SYWVdHqjSZVpoKkcM0tJNwWtvmjmE2Jir36F0siY1CCbr7g2vz6LcOtA/q7Jj5G2/x1qMWzlPq/Bwg==}
     dev: false
 
+  /@types/aos/3.0.4:
+    resolution: {integrity: sha512-mna6Jd6bdK1NpwarLopGvXOgUoCfj0470IwLxuVOFDElTGI0JTd7xSGQ0AjbAEnHErC/b3fA9t2uB3IXVKmckA==}
+    dev: true
+
   /@types/json-schema/7.0.11:
     resolution: {integrity: sha512-wOuvG1SN4Us4rez+tylwwwCV1psiNVOkJeM3AUWUNWg/jDQY2+HE/444y5gc+jBmRqASOm2Oeh5c1axHobwRKQ==}
     dev: true
@@ -1288,6 +1296,14 @@ packages:
       picomatch: 2.3.1
     dev: true
 
+  /aos/3.0.0-beta.6:
+    resolution: {integrity: sha512-VLWrpq8bfAWcetynVHMMrqdC+89Qq/Ym6UBJbHB4crIwp3RR8uq1dNGgsFzoDl03S43rlVMK+na3r5+oUCZsYw==}
+    dependencies:
+      classlist-polyfill: 1.2.0
+      lodash.debounce: 4.0.8
+      lodash.throttle: 4.1.1
+    dev: false
+
   /arg/5.0.2:
     resolution: {integrity: sha512-PYjyFOLKQ9y57JvQ6QLo8dAgNqswh8M1RMJYdQduT6xbWSgK36P/Z/v+p888pM69jMMfS8Xd8F6I1kQ/I9HUGg==}
     dev: true
@@ -1495,6 +1511,10 @@ packages:
     optionalDependencies:
       fsevents: 2.3.2
     dev: true
+
+  /classlist-polyfill/1.2.0:
+    resolution: {integrity: sha512-GzIjNdcEtH4ieA2S8NmrSxv7DfEV5fmixQeyTmqmRmRJPGpRBaSnA2a0VrCjyT8iW8JjEdMbKzDotAJf+ajgaQ==}
+    dev: false
 
   /clsx/1.1.1:
     resolution: {integrity: sha512-6/bPho624p3S2pMyvP5kKBPXnI3ufHLObBFCfgx+LkeR5lg2XYy2hqZqUf45ypD8COn2bhgGJSUE+l5dhNBieA==}
@@ -2786,9 +2806,17 @@ packages:
       p-locate: 5.0.0
     dev: true
 
+  /lodash.debounce/4.0.8:
+    resolution: {integrity: sha512-FT1yDzDYEoYWhnSGnpE/4Kj1fLZkDFyqRb7fNt6FdYOSxlUWAtp42Eh6Wb0rGIv/m9Bgo7x4GhQbm5Ys4SG5ow==}
+    dev: false
+
   /lodash.merge/4.6.2:
     resolution: {integrity: sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==}
     dev: true
+
+  /lodash.throttle/4.1.1:
+    resolution: {integrity: sha512-wIkUCfVKpVsWo3JSZlc+8MB5it+2AN5W8J7YVMST30UrvcQNZ1Okbj+rbVniijTWE6FGYy4XJq/rHkas8qJMLQ==}
+    dev: false
 
   /loose-envify/1.4.0:
     resolution: {integrity: sha512-lyuxPGr/Wfhrlem2CL/UcnUc1zcqKAImBDzukY7Y5F/yQiNdko6+fRLevlw1HgMySw7f611UIY408EtxRSoK3Q==}
