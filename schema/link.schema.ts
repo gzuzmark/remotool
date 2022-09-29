@@ -15,6 +15,15 @@ export const getSingleLinkSchema = z.object({
   linkId: z.string().cuid(),
 });
 
+export const verifyLinkSchema = z.object({
+  maxSalary: z.number(),
+  slug: z.string(),
+});
+
+export const verifyLinkUsageSchema = z.object({
+  slug: z.string(),
+});
+
 // minSalary: 0,
 // salaryType: 'gross',
 // salaryPeriod: '',

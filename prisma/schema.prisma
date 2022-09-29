@@ -64,7 +64,7 @@ model VerificationToken {
 
 model CandidateRecruiterLink {
     id          Int      @id @default(autoincrement())
-    matchId     String   @default(cuid())
+    matchId     String   @unique @default(cuid())
     createdAt   DateTime @default(now())
     minSalary   Decimal  @db.Decimal(10, 2)
     maxSalary   Decimal? @db.Decimal(10, 2)
