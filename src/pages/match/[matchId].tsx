@@ -1,6 +1,7 @@
 import Error from 'next/error';
 import { useRouter } from 'next/router';
 import React from 'react';
+import CreateLinkForm from '../../components/CreateLink';
 import { trpc } from '../../utils/trpc';
 
 const SingleMatchPage = () => {
@@ -19,7 +20,7 @@ const SingleMatchPage = () => {
 
   return (
     <div>
-      <p>hi</p>{' '}
+      <CreateLinkForm slug={query.matchId} />
     </div>
   );
 };
