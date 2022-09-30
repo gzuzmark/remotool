@@ -20,6 +20,7 @@ const useHeroStyles = createStyles((theme) => ({
 
   title: {
     color: theme.colorScheme === 'dark' ? theme.white : theme.black,
+    // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
     fontFamily: `Greycliff CF, ${theme.fontFamily}`,
     fontSize: 44,
     lineHeight: 1.2,

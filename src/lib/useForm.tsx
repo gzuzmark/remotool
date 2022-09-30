@@ -1,6 +1,6 @@
 import { ChangeEvent, useEffect, useState } from 'react';
 
-type IForm = string | number | File;
+type IForm = string | number | File | undefined;
 
 export default function useForm<T extends Record<string, IForm>>(initial: {
   [P in keyof T]: T[P];
@@ -40,7 +40,7 @@ export default function useForm<T extends Record<string, IForm>>(initial: {
   function clearForm(): void {
     const blankState = Object.fromEntries(
       Object.entries(inputs).map(([key, value]) => [key, ''])
-    );
+    ) as T;
     setInputs(blankState);
   }
 

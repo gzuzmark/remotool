@@ -19,13 +19,15 @@ const useFormStyles = createStyles((theme) => {
     wrapper: {
       display: 'flex',
       backgroundColor:
-        theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.white,
+        theme.colorScheme === 'dark'
+          ? theme?.colors?.dark?.[8] || ''
+          : theme.white,
       borderRadius: theme.radius.lg,
       padding: 4,
       border: `1px solid ${
         theme.colorScheme === 'dark'
-          ? theme.colors.dark[8]
-          : theme.colors.gray[2]
+          ? theme?.colors?.dark?.[8] || ''
+          : theme?.colors?.gray?.[2] || ''
       }`,
 
       [BREAKPOINT]: {
@@ -61,7 +63,8 @@ const useFormStyles = createStyles((theme) => {
 
     title: {
       marginBottom: theme.spacing.xl * 1.5,
-      fontFamily: `Greycliff CF, ${theme.fontFamily}`,
+      // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
+      fontFamily: `Greycliff CF, ${theme?.fontFamily}`,
 
       [BREAKPOINT]: {
         marginBottom: theme.spacing.xl,

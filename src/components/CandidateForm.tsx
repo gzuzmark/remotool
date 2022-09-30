@@ -2,6 +2,7 @@ import {
   Button,
   CopyButton,
   Group,
+  Input,
   Text,
   NativeSelect,
   NumberInput,
@@ -46,7 +47,7 @@ const CandidateForm = () => {
     resetForm();
   };
 
-  const ref = useEventListener('change', handleChange);
+  // const ref = useEventListener('change', handleChange);
   return (
     <>
       {isSuccess && (
@@ -86,7 +87,7 @@ const CandidateForm = () => {
                 mt="xl"
                 breakpoints={[{ maxWidth: 'sm', cols: 1 }]}
               >
-                <NumberInput
+                {/* <NumberInput
                   ref={ref}
                   name="minSalary"
                   value={inputs.minSalary}
@@ -96,7 +97,23 @@ const CandidateForm = () => {
                   aria-label="Salary"
                   withAsterisk
                   min={0}
-                />
+                /> */}
+                <Input.Wrapper
+                  id="input-demo"
+                  placeholder="salary here"
+                  label="Salary"
+                  aria-label="Salary"
+                  withAsterisk
+                >
+                  <Input
+                    id="input-demo"
+                    name="minSalary"
+                    value={inputs.minSalary}
+                    type="number"
+                    min={0}
+                    onChange={handleChange}
+                  />
+                </Input.Wrapper>
                 <NativeSelect
                   name="salaryType"
                   value={inputs.salaryType}

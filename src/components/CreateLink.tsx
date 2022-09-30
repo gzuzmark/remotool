@@ -3,32 +3,39 @@ import {
   Image,
   Title,
   Text,
-  List,
-  ThemeIcon,
   Group,
-  Button,
   Badge,
-  Transition,
+  Loader,
 } from '@mantine/core';
-
+import { useEffect } from 'react';
+import { useRouter } from 'next/router';
 import AOS from 'aos';
 import CandidateForm from './CandidateForm';
 import RecruiterForm from './RecruiterForm';
 import useHeroStyles from './styles/Hero';
 
 import 'aos/dist/aos.css';
-import { useEffect } from 'react';
+
+import { trpc } from '../utils/trpc';
 
 type CreateLinkProps = {
   slug?: string;
 };
 
-export const FormSection = ({ slug }) => (
+export const FormSection = ({ slug }: CreateLinkProps) => (
   <div>{slug ? <RecruiterForm slug={slug} /> : <CandidateForm />}</div>
 );
 
-const CreateLinkForm = ({ slug }: CreateLinkProps) => {
+const CreateLinkForm = () => {
+  const { query } = useRouter();
+  const slug = query.matchId as string;
+
   const { classes } = useHeroStyles();
+
+  const { data, isLoading } = trpc.useQuery([
+    'link.verify-link-usage',
+    { slug },
+  ]);
 
   useEffect(() => {
     AOS.init({ duration: 1000 });
@@ -53,7 +60,18 @@ const CreateLinkForm = ({ slug }: CreateLinkProps) => {
               match and safe as much time as possible.
             </Text>
             <Group>
-              <FormSection slug={slug} />
+              {isLoading && <Loader />}
+              {!isLoading && data?.alreadyUsed && (
+                <Badge
+                  sx={{ paddingLeft: 0 }}
+                  size="lg"
+                  radius="xl"
+                  color="yellow"
+                >
+                  ¡You already checked the match with this candidate!
+                </Badge>
+              )}
+              {!isLoading && !data?.alreadyUsed && <FormSection slug={slug} />}
             </Group>
 
             {/* <List

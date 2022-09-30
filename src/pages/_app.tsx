@@ -5,9 +5,10 @@ import { withTRPC } from '@trpc/next';
 import { SessionProvider } from 'next-auth/react';
 import type { AppType } from 'next/dist/shared/lib/utils';
 import superjson from 'superjson';
+import { MantineProvider, createEmotionCache } from '@mantine/core';
 import type { AppRouter } from '../server/router/app.router';
 import '../styles/globals.css';
-import { MantineProvider, createEmotionCache } from '@mantine/core';
+
 import AppContainer from '../components/AppContainer';
 
 const myCache = createEmotionCache({
@@ -16,9 +17,12 @@ const myCache = createEmotionCache({
 });
 
 const MyApp: AppType = ({
+  // eslint-disable-next-line react/prop-types
   Component,
+  // eslint-disable-next-line react/prop-types
   pageProps: { session, ...pageProps },
 }) => (
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   <SessionProvider session={session}>
     <MantineProvider
       emotionCache={myCache}

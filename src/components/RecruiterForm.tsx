@@ -8,9 +8,9 @@ import {
   NativeSelect,
   Textarea,
   Badge,
+  Input,
 } from '@mantine/core';
-import { useEventListener } from '@mantine/hooks';
-import { nanoid } from 'nanoid';
+
 import { FormEvent } from 'react';
 
 import { CreateLinkInput } from '../../schema/link.schema';
@@ -32,12 +32,6 @@ const RecruiterForm = ({ slug }: RecruiterFormProps) => {
     comment: '',
     slug: '',
   });
-  const url = window.location.origin;
-
-  const { data: linkData, isLoading: initialIsLoading } = trpc.useQuery([
-    'link.verify-link-usage',
-    { slug },
-  ]);
 
   const {
     mutateAsync: verifyLink,
@@ -56,24 +50,23 @@ const RecruiterForm = ({ slug }: RecruiterFormProps) => {
     resetForm();
   };
 
-  const ref = useEventListener('change', handleChange);
   return (
     <>
       {isSuccess && (
         <Group>
           <Text>Share the link with the recruiter</Text>
 
-          <Text>
-            max:{data.maxSalary} min:{data.minSalary}
-          </Text>
+          <Text>{`max:${data?.maxSalary || 0} min:${
+            data?.minSalary as number
+          }`}</Text>
 
-          {linkData.alreadyUsed && (
+          {/* {linkData?.alreadyUsed && (
             <Badge sx={{ paddingLeft: 0 }} size="lg" radius="xl" color="yellow">
               ¡Ya has comprobado si hay match con este candidato!
             </Badge>
-          )}
+          )} */}
 
-          {!linkData.alreadyUsed && data.isMatch ? (
+          {data.isMatch ? (
             <Badge sx={{ paddingLeft: 0 }} size="lg" radius="xl" color="teal">
               It's a match! 🎉
             </Badge>
@@ -105,17 +98,22 @@ const RecruiterForm = ({ slug }: RecruiterFormProps) => {
                 mt="xl"
                 breakpoints={[{ maxWidth: 'sm', cols: 1 }]}
               >
-                <NumberInput
-                  ref={ref}
-                  name="minSalary"
-                  value={inputs.minSalary}
-                  type="number"
+                <Input.Wrapper
+                  id="input-demo"
                   placeholder="salary here"
                   label="Salary"
                   aria-label="Salary"
                   withAsterisk
-                  min={0}
-                />
+                >
+                  <Input
+                    id="input-demo"
+                    name="minSalary"
+                    value={inputs.minSalary}
+                    type="number"
+                    min={0}
+                    onChange={handleChange}
+                  />
+                </Input.Wrapper>
               </SimpleGrid>
 
               <Group position="center" grow mt="md">

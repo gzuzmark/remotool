@@ -58,7 +58,7 @@ export const linkRouter = createRouter()
         isMatch = maxSalary >= link.minSalary;
       }
       return {
-        alreadyUsed: isMatch,
+        isMatch,
         maxSalary: input.maxSalary,
         minSalary: link?.minSalary || 0,
       };
@@ -83,22 +83,5 @@ export const linkRouter = createRouter()
       return {
         alreadyUsed,
       };
-    },
-  })
-  .query('hello', {
-    input: z
-      .object({
-        text: z.string().nullish(),
-      })
-      .nullish(),
-    resolve({ input }) {
-      return {
-        greeting: `Hello ${input?.text ?? 'world'}`,
-      };
-    },
-  })
-  .query('getAll', {
-    async resolve({ ctx }) {
-      return await ctx.prisma.example.findMany();
     },
   });

@@ -1,9 +1,9 @@
 // src/server/router/index.ts
-import superjson from 'superjson';
+
 import { createRouter } from '../createRouterContext';
 
 import { linkRouter } from './link.router';
-import { protectedExampleRouter } from './protected-example-router';
+// import { protectedExampleRouter } from './protected-example-router';
 
 export const appRouter = createRouter().merge('link.', linkRouter);
 // .merge('auth.', protectedExampleRouter);

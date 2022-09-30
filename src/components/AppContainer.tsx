@@ -1,6 +1,10 @@
 import { AppShell, Footer, Group, Header, Text } from '@mantine/core';
 
-const AppContainer = ({ children }) => (
+type AppContainerProps = {
+  children: React.ReactElement;
+};
+
+const AppContainer = ({ children }: AppContainerProps) => (
   <AppShell
     styles={{
       main: {

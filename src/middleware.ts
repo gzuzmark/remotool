@@ -23,8 +23,8 @@ export async function middleware(req: NextRequest, ev: NextFetchEvent) {
     return NextResponse.redirect(req.nextUrl.origin);
   }
 
-  const data = await slugFetch.json();
-  console.log('🚀 ~ file: middleware.ts ~ line 27 ~ middleware ~ data', data);
+  const data = (await slugFetch.json()) as { matchId: string };
+
   if (data?.matchId) {
     return NextResponse.redirect(new URL(`/match/${data?.matchId}`, req.url));
   }
