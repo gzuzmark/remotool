@@ -41,7 +41,6 @@ const VerifyLinkForm = () => {
         </>
       </HeroSection>
       <FeaturesCards />
-      <Footer />
     </>
   );
 };

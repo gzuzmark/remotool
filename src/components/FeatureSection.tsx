@@ -56,7 +56,10 @@ const useStyles = createStyles((theme) => ({
 
   card: {
     border: `1px solid ${
-      theme.colorScheme === 'dark' ? theme.colors.dark[5] : theme.colors.gray[1]
+      // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
+      theme.colorScheme === 'dark'
+        ? theme?.colors?.dark?.[5]
+        : theme?.colors?.gray?.[2]
     }`,
   },
 
