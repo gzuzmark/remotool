@@ -1,18 +1,15 @@
 import dynamic from 'next/dynamic';
-import Error from 'next/error';
-import { useRouter } from 'next/router';
-import React, { Suspense } from 'react';
 
-import { trpc } from '../../utils/trpc';
+import { Suspense } from 'react';
 
-const CreateLinkForm = dynamic(() => import('../../components/CreateLink'), {
+const VerifyLinkForm = dynamic(() => import('../../components/VerifyLink'), {
   ssr: false,
 });
 
 const SingleMatchPage = () => (
   <div>
     <Suspense>
-      <CreateLinkForm />
+      <VerifyLinkForm />
     </Suspense>
   </div>
 );

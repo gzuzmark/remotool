@@ -62,7 +62,6 @@ const useFormStyles = createStyles((theme) => {
     },
 
     title: {
-      marginBottom: theme.spacing.xl * 1.5,
       // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
       fontFamily: `Greycliff CF, ${theme?.fontFamily}`,
 

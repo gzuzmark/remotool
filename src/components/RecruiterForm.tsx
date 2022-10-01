@@ -54,20 +54,8 @@ const RecruiterForm = ({ slug }: RecruiterFormProps) => {
     <>
       {isSuccess && (
         <Group>
-          <Text>Share the link with the recruiter</Text>
-
-          <Text>{`max:${data?.maxSalary || 0} min:${
-            data?.minSalary as number
-          }`}</Text>
-
-          {/* {linkData?.alreadyUsed && (
-            <Badge sx={{ paddingLeft: 0 }} size="lg" radius="xl" color="yellow">
-              ¡Ya has comprobado si hay match con este candidato!
-            </Badge>
-          )} */}
-
           {data.isMatch ? (
-            <Badge sx={{ paddingLeft: 0 }} size="lg" radius="xl" color="teal">
+            <Badge size="lg" radius="xl" color="teal">
               It's a match! 🎉
             </Badge>
           ) : (

@@ -69,7 +69,7 @@ const CandidateForm = () => {
       )}
       {!isSuccess && (
         <form method="POST" className={classes.form} onSubmit={handleSubmit}>
-          <Text size="md" weight={700} className={classes.title}>
+          <Text mb="sm" size="md" weight={700} className={classes.title}>
             Please fill as candidate the the info of your salary expectations
           </Text>
 
