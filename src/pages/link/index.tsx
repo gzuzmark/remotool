@@ -2,9 +2,15 @@ import type { NextPage } from 'next';
 
 import dynamic from 'next/dynamic';
 import { Suspense } from 'react';
+import { Center, Loader } from '@mantine/core';
 
 const CreateLinkForm = dynamic(() => import('../../components/CreateLink'), {
   ssr: false,
+  loading: () => (
+    <Center style={{ width: '100vh', height: '100vh' }}>
+      <Loader variant="bars" />
+    </Center>
+  ),
 });
 
 let render = 0;

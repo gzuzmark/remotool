@@ -103,7 +103,7 @@ export function FeaturesCards() {
       </Group>
 
       <Title order={2} className={classes.title} align="center" mt="sm">
-        Integrate effortlessly with any technology stack
+        Communicate quickly your rates and see the match
       </Title>
 
       <Text
@@ -112,8 +112,9 @@ export function FeaturesCards() {
         align="center"
         mt="md"
       >
-        Every once in a while, you’ll see a Golbat that’s missing some fangs.
-        This happens when hunger drives it to try biting a Steel-type Pokémon.
+        This tools helps you share salary expectations and see if there's a
+        match between candidates and recruiters about how one of them can offer
+        and the expectation.
       </Text>
 
       <SimpleGrid

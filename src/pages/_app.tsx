@@ -25,7 +25,6 @@ const MyApp: AppType = ({
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   <SessionProvider session={session}>
     <MantineProvider
-      emotionCache={myCache}
       withGlobalStyles
       withNormalizeCSS
       theme={{ colorScheme: 'light', primaryColor: 'indigo' }}
