@@ -10,7 +10,7 @@ let render = 0;
 
 const SingleMatchPage = () => {
   console.log(
-    '🚀 ~ file: [matchId].tsx ~ line 10 ~ render SingleMatchPage',
+    '🚀 ~ file: [matchId].tsx ~ line 10 ~ render SingleMatchPage s',
     // eslint-disable-next-line no-plusplus
     render++
   );
