@@ -6,12 +6,20 @@ const VerifyLinkForm = dynamic(() => import('../../components/VerifyLink'), {
   ssr: false,
 });
 
-const SingleMatchPage = () => (
-  <div>
-    <Suspense>
-      <VerifyLinkForm />
-    </Suspense>
-  </div>
-);
+let render = 0;
+
+const SingleMatchPage = () => {
+  console.log(
+    '🚀 ~ file: [matchId].tsx ~ line 10 ~ render SingleMatchPage',
+    render++
+  );
+  return (
+    <div>
+      <Suspense>
+        <VerifyLinkForm />
+      </Suspense>
+    </div>
+  );
+};
 
 export default SingleMatchPage;

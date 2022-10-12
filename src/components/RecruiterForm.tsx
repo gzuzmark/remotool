@@ -9,6 +9,7 @@ import {
   Textarea,
   Badge,
   Input,
+  Space,
 } from '@mantine/core';
 
 import { FormEvent } from 'react';
@@ -20,9 +21,10 @@ import useFormStyles from './styles/Form';
 
 type RecruiterFormProps = {
   slug: string;
+  link: Record<string, string>;
 };
 
-const RecruiterForm = ({ slug }: RecruiterFormProps) => {
+const RecruiterForm = ({ slug, link }: RecruiterFormProps) => {
   const { classes } = useFormStyles();
   const { inputs, handleChange, resetForm } = useForm<CreateLinkInput>({
     minSalary: 0,
@@ -72,6 +74,12 @@ const RecruiterForm = ({ slug }: RecruiterFormProps) => {
         <form method="POST" className={classes.form} onSubmit={handleSubmit}>
           <Text size="md" weight={700} className={classes.title}>
             Please fill the maximum salary you could offer the candidate
+          </Text>
+          <Space h="xs" />
+          <Text size="md" weight={700} className={classes.title}>
+            {`(${link?.currency}/${link.isNetSalary ? 'Net' : 'Gross'}/ ${
+              link.isAnual ? 'Anual' : 'Monthly'
+            } )`}
           </Text>
 
           <div className={classes.fields}>

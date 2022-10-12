@@ -17,10 +17,14 @@ const VerifyLinkForm = () => {
 
   console.log('VerifyLinkForm Render');
 
-  const { data, isLoading } = trpc.useQuery([
-    'link.verify-link-usage',
-    { slug },
-  ]);
+  const { data, isLoading } = trpc.useQuery(
+    ['link.verify-link-usage', { slug }],
+    {
+      refetchInterval: false,
+      refetchOnReconnect: false,
+      refetchOnWindowFocus: false,
+    }
+  );
 
   return (
     // <div className={classes.wrapper}>
@@ -36,7 +40,7 @@ const VerifyLinkForm = () => {
             </Badge>
           )}
           {!isLoading && !data?.alreadyUsed && (
-            <RecruiterForm key={slug} slug={slug} />
+            <RecruiterForm key={slug} slug={slug} link={data} />
           )}
         </>
       </HeroSection>

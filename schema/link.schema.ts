@@ -1,4 +1,5 @@
 import z from 'zod';
+import { CandidateRecruiterLink } from '@prisma/client';
 
 export const createLinkSchema = z.object({
   minSalary: z.number().min(0),
@@ -22,6 +23,15 @@ export const verifyLinkSchema = z.object({
 
 export const verifyLinkUsageSchema = z.object({
   slug: z.string(),
+});
+
+export const verifyLinkUsageResponseSchema = z.object({
+  alreadyUsed: z.string(),
+  isNetSalary: z.boolean(),
+  isAnual: z.boolean(),
+  currency: z.string(),
+  comment: z.string(),
+  slug: z.string().nullish(),
 });
 
 // minSalary: 0,

@@ -4,19 +4,15 @@ import {
   Title,
   Text,
   Group,
-  Badge,
-  Loader,
+  MediaQuery,
 } from '@mantine/core';
 import { useEffect } from 'react';
-import { useRouter } from 'next/router';
+
 import AOS from 'aos';
-import CandidateForm from './CandidateForm';
-import RecruiterForm from './RecruiterForm';
+
 import useHeroStyles from './styles/Hero';
 
 import 'aos/dist/aos.css';
-
-import { trpc } from '../utils/trpc';
 
 type HeroSectionProps = {
   children: React.ReactElement;
@@ -51,8 +47,9 @@ const HeroSection = ({ children }: HeroSectionProps) => {
               {children}
             </Group>
           </div>
-
-          <Image data-aos="fade-up" src="/work-from-home.svg" />
+          <MediaQuery smallerThan="sm" styles={{ display: 'none' }}>
+            <Image data-aos="fade-up" src="/work-from-home.svg" />
+          </MediaQuery>
         </div>
       </Container>
     </div>

@@ -1,9 +1,8 @@
-import { z } from 'zod';
-import { Prisma } from '@prisma/client';
+import { Prisma, CandidateRecruiterLink } from '@prisma/client';
 import {
   createLinkSchema,
-  CreateLinkInput,
   verifyLinkSchema,
+  verifyLinkUsageResponseSchema,
   verifyLinkUsageSchema,
 } from '../../../schema/link.schema';
 import { createRouter } from '../createRouterContext';
@@ -40,12 +39,6 @@ export const linkRouter = createRouter()
 
       console.log({ link });
 
-      if (link?.maxSalary) {
-        return {
-          alreadyUsed: true,
-        };
-      }
-
       const maxSalary = new Prisma.Decimal(input.maxSalary);
       let isMatch = false;
       if (link) {
@@ -81,6 +74,7 @@ export const linkRouter = createRouter()
       }
 
       return {
+        ...link,
         alreadyUsed,
       };
     },

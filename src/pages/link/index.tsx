@@ -7,12 +7,17 @@ const CreateLinkForm = dynamic(() => import('../../components/CreateLink'), {
   ssr: false,
 });
 
-const Home: NextPage = () => (
-  <div>
-    <Suspense>
-      <CreateLinkForm />
-    </Suspense>
-  </div>
-);
+let render = 0;
+
+const Home: NextPage = () => {
+  console.log('🚀 ~ file: index.tsx ~ line 11 ~ render Home', render++);
+  return (
+    <div>
+      <Suspense>
+        <CreateLinkForm />
+      </Suspense>
+    </div>
+  );
+};
 
 export default Home;
