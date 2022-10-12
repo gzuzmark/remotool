@@ -74,7 +74,9 @@ export const linkRouter = createRouter()
       }
 
       return {
-        ...link,
+        currency: link?.currency,
+        salaryType: link?.isNetSalary ? 'Net' : 'Gross',
+        salaryPeriod: link?.isAnual ? 'Anual' : 'Monthly',
         alreadyUsed,
       };
     },

@@ -2,7 +2,7 @@ import { Badge, Loader } from '@mantine/core';
 
 import { useRouter } from 'next/router';
 
-import RecruiterForm from './RecruiterForm';
+import RecruiterForm, { LinkFromServer } from './RecruiterForm';
 
 import 'aos/dist/aos.css';
 
@@ -40,7 +40,7 @@ const VerifyLinkForm = () => {
             </Badge>
           )}
           {!isLoading && !data?.alreadyUsed && (
-            <RecruiterForm key={slug} slug={slug} link={data} />
+            <RecruiterForm key={slug} slug={slug} link={data!} />
           )}
         </>
       </HeroSection>

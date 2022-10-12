@@ -16,12 +16,14 @@ import { FormEvent } from 'react';
 
 import { CreateLinkInput } from '../../schema/link.schema';
 import useForm from '../lib/useForm';
-import { trpc } from '../utils/trpc';
+import { InferQueryOutput, trpc } from '../utils/trpc';
 import useFormStyles from './styles/Form';
+
+export type LinkFromServer = InferQueryOutput<'link.verify-link-usage'>;
 
 type RecruiterFormProps = {
   slug: string;
-  link: Record<string, string>;
+  link: LinkFromServer;
 };
 
 const RecruiterForm = ({ slug, link }: RecruiterFormProps) => {
@@ -77,8 +79,8 @@ const RecruiterForm = ({ slug, link }: RecruiterFormProps) => {
           </Text>
           <Space h="xs" />
           <Text size="md" weight={700} className={classes.title}>
-            {`(${link?.currency}/${link.isNetSalary ? 'Net' : 'Gross'}/ ${
-              link.isAnual ? 'Anual' : 'Monthly'
+            {`(${link?.currency || 'USD'}/${link.salaryType}/ ${
+              link.salaryPeriod
             } )`}
           </Text>
 
